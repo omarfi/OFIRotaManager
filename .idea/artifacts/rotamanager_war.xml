@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="rotamanager:war">
+    <output-path>$PROJECT_DIR$/../rotamanager/rotamanager/target</output-path>
+    <root id="archive" name="rotamanager-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="rotamanager:war exploded" />
+    </root>
+  </artifact>
+</component>
