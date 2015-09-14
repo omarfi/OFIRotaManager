@@ -2,15 +2,19 @@ package com.ofi.rotamanager;
 
 import com.ofi.rotamanager.login.shop.LoginShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
@@ -34,16 +38,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private LoginShopService loginShopService;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(loginShopService);
+    }
+
+    @Override
+    public void configure(WebSecurity webSecurity) throws Exception {
+        webSecurity.ignoring().antMatchers("/static/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().and().authorizeRequests()
-                .antMatchers("/index.html", "/dashboard.html", "/login.html", "/**").permitAll().anyRequest()
-                .authenticated().and().csrf()
-                .csrfTokenRepository(csrfTokenRepository()).and()
+                .antMatchers("/index.html", "/dashboard.html", "/login.html", "/").permitAll().anyRequest()
+                .authenticated().and()
+                .logout()
+                .logoutRequestMatcher( new AntPathRequestMatcher( "/logout" ) )
+                .logoutSuccessUrl( "/login" )
+                .deleteCookies( "JSESSIONID" )
+                .invalidateHttpSession( true )
+                .and()
+                .csrf().csrfTokenRepository(csrfTokenRepository()).and()
                 .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
     }
 
