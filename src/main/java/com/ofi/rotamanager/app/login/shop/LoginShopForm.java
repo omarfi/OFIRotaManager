@@ -1,4 +1,4 @@
-package com.ofi.rotamanager.login.shop;
+package com.ofi.rotamanager.app.login.shop;
 
 /**
  * Created by Omar Farooq Ilyas on 12.06.2015.

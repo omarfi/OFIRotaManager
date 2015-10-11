@@ -1,4 +1,4 @@
-package com.ofi.rotamanager.login.shop;
+package com.ofi.rotamanager.app.login.shop;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

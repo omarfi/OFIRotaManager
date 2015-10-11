@@ -1,4 +1,4 @@
-package com.ofi.rotamanager.employee;
+package com.ofi.rotamanager.app.employee;
 
 import javax.persistence.*;
 

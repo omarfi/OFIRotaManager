@@ -1,4 +1,4 @@
-package com.ofi.rotamanager.shop;
+package com.ofi.rotamanager.app.shop;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
