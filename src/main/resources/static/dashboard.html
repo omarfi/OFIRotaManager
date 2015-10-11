@@ -1,0 +1,10 @@
+<div ng-controller="DashboardCtrl" ng-cloak class="ng-cloak container">
+    <h1>Greeting</h1>
+    <div ng-show="authenticated">
+        <p>You are logged in</p>
+        <h1><a href="" ng-click="logout()">logout</a></h1>
+    </div>
+    <div  ng-show="!authenticated">
+        <p>Login to see your greeting</p>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+com\ofi\rotamanager\app\login\shop\LoginShopServiceImpl.class
+com\ofi\rotamanager\configuration\csrf\CSRF.class
+com\ofi\rotamanager\app\login\shop\LoginShopService.class
+com\ofi\rotamanager\configuration\cors\CORSFilter.class
+com\ofi\rotamanager\app\login\shop\LoginShopForm.class
+com\ofi\rotamanager\app\employee\Employee.class
+com\ofi\rotamanager\configuration\rest\RESTAuthenticationEntryPoint.class
+com\ofi\rotamanager\app\shop\Shop.class
+com\ofi\rotamanager\app\login\shop\LoginShopController.class
+com\ofi\rotamanager\configuration\rest\RESTLogoutSuccessHandler.class
+com\ofi\rotamanager\configuration\rest\RESTAuthenticationSuccessHandler.class
+com\ofi\rotamanager\configuration\csrf\CsrfTokenResponseCookieBindingFilter.class
+com\ofi\rotamanager\configuration\ApplicationSecurity.class
+com\ofi\rotamanager\configuration\SecurityConfiguration.class
