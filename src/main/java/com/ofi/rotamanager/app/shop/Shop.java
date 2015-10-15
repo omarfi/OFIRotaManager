@@ -12,6 +12,10 @@ import javax.persistence.Table;
 @Table(name = "shop")
 public class Shop {
 
+    public Shop(String id) {
+        this.id = id;
+    }
+
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private String id;

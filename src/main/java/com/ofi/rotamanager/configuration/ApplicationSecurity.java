@@ -49,7 +49,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers(HttpMethod.OPTIONS, "/*/**").permitAll()
 				.antMatchers("/login", "/rest/open/**").permitAll()
-				.antMatchers("/logout", "/rest/**").authenticated();
+				.antMatchers("/logout", "/rest/**", "/shop").authenticated();
 
 		// Handlers and entry points
 		http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);

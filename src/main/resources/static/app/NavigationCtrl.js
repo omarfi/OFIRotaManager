@@ -37,7 +37,6 @@ RMApp.controller('NavigationCtrl', function($rootScope, $scope, $http, $location
     };
 
     $scope.login = function () {
-        console.info("Got here")
         Login.login($scope.credentials.shopId, $scope.credentials.password, function (data, status, headers, config) {
             // Success handler
             console.info('The user has been successfully logged in! ', data, status, headers, config);
