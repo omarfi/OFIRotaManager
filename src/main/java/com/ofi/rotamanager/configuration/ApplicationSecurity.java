@@ -1,6 +1,6 @@
 package com.ofi.rotamanager.configuration;
 
-import com.ofi.rotamanager.app.login.shop.LoginShopService;
+import com.ofi.rotamanager.app.login.LoginService;
 import com.ofi.rotamanager.configuration.cors.CORSFilter;
 import com.ofi.rotamanager.configuration.csrf.CsrfTokenResponseCookieBindingFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,19 +37,19 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 	private LogoutSuccessHandler logoutSuccessHandler;
 
 	@Autowired
-	private LoginShopService loginShopService;
+	private LoginService loginService;
 
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(loginShopService);
+		auth.userDetailsService(loginService);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers(HttpMethod.OPTIONS, "/*/**").permitAll()
-				.antMatchers("/login", "/rest/open/**").permitAll()
-				.antMatchers("/logout", "/rest/**", "/shop").authenticated();
+				.antMatchers("/login").permitAll()
+				.antMatchers("/logout", "/rest/**").authenticated();
 
 		// Handlers and entry points
 		http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);

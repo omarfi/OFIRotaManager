@@ -1,9 +1,9 @@
-package com.ofi.rotamanager.app.login.shop;
+package com.ofi.rotamanager.app.login;
 
 /**
  * Created by Omar Farooq Ilyas on 12.06.2015.
  */
-public class LoginShopForm {
+public class LoginDTO {
 
     private String shopId;
     private String password;

@@ -1,4 +1,4 @@
-package com.ofi.rotamanager.app.login.shop;
+package com.ofi.rotamanager.app.login;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @Service
-public class LoginShopServiceImpl implements LoginShopService {
+public class LoginServiceImpl implements LoginService {
 
     @SuppressWarnings("deprecation")
     @Override
@@ -28,5 +28,5 @@ public class LoginShopServiceImpl implements LoginShopService {
             return new User(s, "password", true, true, true, true, gas);
         }
         else throw new UsernameNotFoundException("Butikken finnes ikke");
-    }
+}
 }

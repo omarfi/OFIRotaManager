@@ -2,7 +2,7 @@
 
 RMApp.controller('DashboardCtrl', function ($scope, $rootScope, $location, $http, $route, $cookies, $q, $resource, Cookies, Csrf, Login) {
 
-    var shopResources = $resource('/shop', {}, {
+    var shopResources = $resource('/rest/shop', {}, {
         get: {method: 'GET', cache: false}
     });
 
@@ -10,7 +10,7 @@ RMApp.controller('DashboardCtrl', function ($scope, $rootScope, $location, $http
 
     var retrieveShop = function () {
         shopResources.get().$promise.then(function (response) {
-            console.log('GET /shop returned: ', response);
+            console.log('GET /rest/shop returned: ', response);
             $scope.shop = response.name;
             $scope.authenticated = response.authenticated
         })
@@ -30,7 +30,6 @@ RMApp.controller('DashboardCtrl', function ($scope, $rootScope, $location, $http
     $scope.logout = function () {
         Login.logout(function (data, status, headers, config) {
             // Success handler
-            //TODO: test this: $scope.credentials = {shopId: '', password: ''};
             delete $cookies['JSESSIONID'];
             $rootScope.authenticated = false;
             console.info('The user has been logged out!');
